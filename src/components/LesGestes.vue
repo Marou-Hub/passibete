@@ -10,12 +10,11 @@
       </ul>
     </div>
     <div id="ecogestes">
-      <div v-for="geste in store.gestes">
+      <div v-for="(geste, index) in store.gestes">
         <!-- on veut affichier tous les gestes issus de l'API ici -->
-        <RouterLink :to="{name: 'gesteDetail', params: {id:store.id - 1000}}">
-          <UnGeste :geste="geste" :position="store.id"/>
+        <RouterLink :to="{name: 'gesteDetail', params: {id:index}}">
+          <UnGeste :geste="geste" :position="index"/>
         </RouterLink>
-        {{ store.increment() }}
       </div>
       <div class="article-accueil">
         <h2>
@@ -24,6 +23,7 @@
       </div>
     </div>
     <!-- Tags -->
+    <LesTags></LesTags>
   </div>
 </template>
 
@@ -31,11 +31,10 @@
   import { ref } from 'vue';
   import { useDefaultStore } from '../stores/index.js';
   import UnGeste from './UnGeste.vue';
+  import LesTags from "@/components/LesTags.vue";
 
   const tag = ref('Tous');
   const store = useDefaultStore();
-  store.loadData();
-
 
 </script>
 

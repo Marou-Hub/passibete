@@ -18,18 +18,18 @@
                         <div class="colonne-texte">
                             <h1>{{geste.titre}}</h1>
                             <div>
-                                <p>{{geste.description}}</p>
+                                <p v-html="geste.description"></p>
                             </div>
                         </div>
                         <div class="colonne-illust">
                             <div class="circle-text-dessus">
-                                <p>{{geste.impact}}</p>
+                                <p v-html="geste.impact"/>
                             </div>
                             <figure><img :src="store.imagesUrl + geste.image" class="imageBestiaire" :alt="geste.titre" :title="geste.titre" />
                                 <figcaption>{{geste.titre}}</figcaption>
                             </figure>
                             <h4 class="tags">
-                                <span>LES_TAGS</span>
+                                <span v-for="tag in geste.tags">{{tag.nom}}</span>
                             </h4>
                         </div>
                     </div>
